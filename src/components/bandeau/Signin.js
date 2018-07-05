@@ -1,5 +1,6 @@
 import React from "react";
 
+/*Composant représentant le formulaire d'inscription */
 class Signin extends React.Component{
     constructor(props) {
         super(props);
@@ -9,10 +10,12 @@ class Signin extends React.Component{
         }
     }
 
-    
+    //inactif
     handleEmailChange = (e) => {
         this.setState({email:e.target.value})
     }
+
+     //inactif
     handlePasswordChange = (e) => {
         this.setState({password:e.target.value})
     }
@@ -20,6 +23,7 @@ class Signin extends React.Component{
 
     render() {
         return(
+             //inactif
             <form className="form-signin"
             style={{
                 marginTop: 100

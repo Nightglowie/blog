@@ -1,5 +1,10 @@
 import React from "react";
+import Twitter from "../../components/shareButtons/twitter.js";
+import Facebook from "../../components/shareButtons/facebook";
+import GooglePlus from "../../components/shareButtons/googlePlus";
+import Linkedin from "../../components/shareButtons/linkedin.js";
 
+/*Composant représentant l'article numéro 1 */
 class quatre extends React.Component {
     constructor(props){
         super(props);
@@ -27,6 +32,14 @@ class quatre extends React.Component {
                     <br/>
                     {description}
                 </div>
+                <br />
+                <Twitter/>
+                <br />
+                <Facebook/>
+                <br />
+                <GooglePlus/>
+                <br />
+                <Linkedin/>
             </div>
             );
         }

@@ -1,5 +1,10 @@
 import React from "react";
+import Twitter from "../../components/shareButtons/twitter.js";
+import Facebook from "../../components/shareButtons/facebook";
+import GooglePlus from "../../components/shareButtons/googlePlus";
+import Linkedin from "../../components/shareButtons/linkedin.js";
 
+/*Composant représentant l'article numéro 1 */
 class un extends React.Component {
     constructor(props){
         super(props);
@@ -8,6 +13,7 @@ class un extends React.Component {
             description : "The annual Code Conference continues to be the best place to hear first-hand accounts and insights from leaders across tech and media and often with a surprise or two cross-over guest. The interviews are fun to watch (especially compared to participating!) and the post-interview lobby conversation can lead to some pretty good debates (like the one this year I had on anti-trust). What distinguished this year’s conference from past years through were apologies — CEO and executive alike seemed to use the forum to apologize for something. To reflect on this year’s conference I wanted to bring together in one place statements made in the interviews that I found most insightful, interesting, or thought-provoking a long with a brief reason why I thought that. It seems as though the corporate world is going through a phase of apologizing for various mistakes or transgressions (linear TV has been running commercials from Facebook, Uber, and Wells Fargo to name a few). I ended up tracking those and because of the frequency I made note of them below."
         }
     }
+
 
     render() {
         let titre = this.state.titre;
@@ -27,6 +33,14 @@ class un extends React.Component {
                     <br/>
                     {description}
                 </div>
+                <br />
+                <Twitter/>
+                <br />
+                <Facebook/>
+                <br />
+                <GooglePlus/>
+                <br />
+                <Linkedin/>
             </div>
             );
         }

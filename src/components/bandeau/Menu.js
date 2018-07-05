@@ -1,8 +1,10 @@
 import React from "react";
 import Signin from './Signin.js';
 
+/*Composant représentant le menu burger en haut à droite*/
 class Menu extends React.Component{
     
+    //change l'apparence du menu en fonction du click
     changerMenu = () => {
         //ouvre et ferme le menuBurger
         document.getElementById("menuBurger").classList.toggle("isOpen");
@@ -14,6 +16,7 @@ class Menu extends React.Component{
         document.getElementsByClassName("barre")[2].classList.toggle("white");
     }
 
+    //fonction appelée quand le menu est cliqué
     handleClick = (e) => {
         e.preventDefault();
         this.changerMenu();
