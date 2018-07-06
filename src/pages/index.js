@@ -1,14 +1,13 @@
 import React from "react";
 import Helmet from "react-helmet";
-
-//composant fait main
 import Home from "../components/home/Home.js";
-
-class Blog extends React.Component {
 
 /*contenu de la main page du blog Coddity
 ce contenu va remplacer {children} dans ../layouts/index.js*/
+class Blog extends React.Component {
+
   render() {
+
     return (
       <div>   
           <div>

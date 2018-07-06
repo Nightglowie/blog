@@ -1,44 +1,26 @@
 import React from 'react';
+import Link from "gatsby-link";
 
+/*Composant représentant un article
+C'est un sous-composant du composant Articles
+*/
 
 class Article extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      article : {
-          id : "",
-          date : "",
-          title : "",
-          text : "",
-          description : "",
-          tag: []
-      }
-    }
-  }
 
-  componentWillReceiveProps(nextProps){
-    //copie le props pour pouvoir modifier à volonté
-    if(nextProps.currentArticle.id){
-      this.setState({article : nextProps.currentArticle});
-    }
+  //handleClick est appelé lors du click sur le premier boutton
+  handleClick = () => {
+    this.props.afficherContenuArticle(this.props.article.id);
   }
 
   render() {
-
+    let id = this.props.article.id;
     return (
-      <div
-      style={{
-          display: "block",
-          margin: "0 auto",
-          maxWidth: 980,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          height: "100%"
-      }}
-      >
-        {this.state.article.description}
-      </div>
+      <tr>
+        <td>{this.props.article.title}</td>
+        <td>{this.props.article.text}</td>
+        <td><button onClick={this.handleClick}>Afficher le contenu dans la page principale</button></td>
+        <td><Link to={`/Articles/${id}`}><button>Afficher le contenu dans une autre page</button></Link></td>
+      </tr>
       );
     }
   }

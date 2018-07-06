@@ -1,11 +1,11 @@
 import React from "react";
 import Actu from './Actu';
 import SearchBar from './SearchBar';
-import Articles from "./Articles.js";
-import Article from "./Article.js";
+import Liste from "./Liste";
+import DescriptionArticle from "./DescriptionArticle.js";
 
 // liste des articles en dur qu'on stocke ensuite dans this.state.articles
-// ils ont : id, title, text, description, tag
+// ils ont : id, date, title, text, description, tag
 let ARTICLES = {
     '1': {id: 1, date: '2018-06-15T17:12:33.962Z', title: 'Insights from Code Conference 2018', text: 'The annual Code Conference continues to be the best place to hear first-hand accounts', 
     description : 'The annual Code Conference continues to be the best place to hear first-hand accounts and insights from leaders across tech and media and often with a surprise or two cross-over guest. The interviews are fun to watch (especially compared to participating!) and the post-interview lobby conversation can lead to some pretty good debates (like the one this year I had on anti-trust). What distinguished this year’s conference from past years through were apologies — CEO and executive alike seemed to use the forum to apologize for something. To reflect on this year’s conference I wanted to bring together in one place statements made in the interviews that I found most insightful, interesting, or thought-provoking a long with a brief reason why I thought that. It seems as though the corporate world is going through a phase of apologizing for various mistakes or transgressions (linear TV has been running commercials from Facebook, Uber, and Wells Fargo to name a few). I ended up tracking those and because of the frequency I made note of them below.', tag: 'code'},
@@ -17,21 +17,30 @@ let ARTICLES = {
     description : 'In a nutshell, here’s how GraphQL contributes to API Lifecycle Management within enterprises: GraphQL supports dynamic queries and is type-safe. This reduces the number of APIs that need to be developed and allows enforcing compile-time checks on the data being requested by consumers. It was designed to be able to seamlessly front multiple sources of data, reducing the number of complex, cross-functional API dev iterations. It is backed by an active community that is constantly improving the tooling and simplifying GraphQL adoption. You can find more from us about how GraphQL helps enterprises over at Dzone. If you work for an organisation that is considering using GraphQL, we would love to talk to you!', tag: 'graphQL'},
 };
 
+/*Composant parent d'Actu, de Articles, de Article et de SearchBar */
 class Home extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             articles : ARTICLES,
-            currentArticle : {}
+            //currentArticle : l'article dont on va afficher la description en bas de page principale
+            currentArticle : {},
+            //pour la recherche
+            idArticles : {},
+            //pour la recherche
+            recherche : false
         }
     }
  
+    /*fonction qui permet de changer le state de Home 
+    a partir de ce qu'on a reçu du composant Articles
+    et nous permet ensuite de passer le state au composant Article dans le render */
     handleAfficherContenuArticle = (articleId) => {
         this.setState({
             currentArticle : this.state.articles[articleId]
         });
     }
- 
+
  
     render() {
  
@@ -39,11 +48,13 @@ class Home extends React.Component {
             <div> 
                 <Actu />
                 <SearchBar />
-                <Articles
+                {/*Tous les articles*/}
+                <Liste
                     articles = {this.state.articles}
                     onChange = {this.handleAfficherContenuArticle}
                 />
-                <Article currentArticle={this.state.currentArticle}/>
+                {/*Article représente la description d'un article*/}
+                <DescriptionArticle currentArticle={this.state.currentArticle}/>
             </div>
             );
         }

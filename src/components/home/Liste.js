@@ -1,23 +1,55 @@
 import React from 'react';
-import Link from "gatsby-link";
+import Article from './Article';
 
-class Liste extends React.Component {
+/*Composant représentant plusieurs articles*/
+class Articles extends React.Component {
 
-  handleClick = () => {
-    this.props.afficherContenuArticle(this.props.article.id);
+  //tri les articles en utilisant le props
+  triArticles = () => {
+    let articlesAsArray = Object.keys(this.props.articles).map((pid) => this.props.articles[pid]);
+    return articlesAsArray;
   }
+
+  //récupère l'id envoyé par Liste et le passe à Home avec onChange
+  handleAfficherContenuArticle = (articleId) => {
+    this.props.onChange(articleId);
+  }
+
+  
+  componentDidMount(){
+    this.triArticles().forEach((article) => {
+    })
+  }
+
 
   render() {
-    let id = this.props.article.id;
-    return (
-      <tr>
-        <td>{this.props.article.title}</td>
-        <td>{this.props.article.text}</td>
-        <td><button onClick={this.handleClick}>Afficher le contenu dans la page principale</button></td>
-        <td><Link to={`/Articles/${id}`}><button>Afficher le contenu dans une autre page</button></Link></td>
-      </tr>
-      );
-    }
-  }
+    //tableau dans lequel on va ajouter des composants Liste
+    let rows = [];
 
-  export default Liste;
+    //ajout de plusieurs composants Liste
+    this.triArticles().forEach((article) => {
+      rows.push(<Article key={article.id} article={article} afficherContenuArticle={this.handleAfficherContenuArticle}></Article>);
+    });
+
+    return (
+    <div
+      style={{
+          margin: "0 auto",
+          maxWidth: 980,
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          height: "100%"
+      }}
+      >
+      <table>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    </div>
+    );
+  }
+}
+
+export default Articles;

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 
+/*Composant représentation le header avec l'icone Coddity et le titre*/
 class Header extends React.Component{
     
     render() {

@@ -1,6 +1,6 @@
 import React from "react";
 
-//fait défiler des images d'actualités dans le background
+//Composant faisant défiler des images d'actualités dans le background
 class Actu extends React.Component{
     constructor(props) {
         super(props);
@@ -12,7 +12,7 @@ class Actu extends React.Component{
         }        
     }
 
-    //change l'image des actualités en fonction de leurs positions sans le tableau
+    //change l'image des actualités en fonction de leurs positions dans le tableau
     nextPic = () => { 
         this.setState((prevState, nextState) => {
             return {
